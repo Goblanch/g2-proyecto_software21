@@ -22,3 +22,9 @@ Requisitos:
 	- Los niveles se resetan todos los días a las 12
 	- Cuando el usuario pase el nivel se mostrará el tiempo restante para poder volver a jugar
 	- Notificación de disponibilidad de nuevo nivel
+	- Añadir efectos de sonido (pregunta acertada/fallada, daño recibido, ataque)
+	- Añadir musica de fondo
+	- Añadir opción de silenciar la música de fondo
+	- Añadir logo a la página 
+	- El diseño de la página deberá ser simple y funcional
+	- Investigar sobre personalización del personaje
