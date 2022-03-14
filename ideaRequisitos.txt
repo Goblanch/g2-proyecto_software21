@@ -1,0 +1,24 @@
+Requisitos:
+	- Registro de usuario
+	- Votación de preguntas
+	- No alimenar con muchas preguntas el sistema para mas facilidad
+	- Estadisticas del jugador (niveles superados, porcentaje de victorias...)
+	- Ranking general de todos los jugadores
+	- Personalización de personaje
+	- Poder cambiar la foto de perfil y elegir nombre de usuario
+	- El usuario podrá ver el porcentaje de aciertos de cada pregunta
+	- Por cada pregunta saldrá un texto profundizando en el tema de la pregunta
+	- Dificultad de preguntas (fácil, media y dificil)
+	- Combo de preguntas acertadas. Si se lleva un número de preguntas acertadas seguidas el 	  siguiente ataque hace mas daño
+	- El usuario solo puede intentar superar un nivel por día
+	- Por cada pregunta habrá un límite de tiempo.
+	- El sistema tendrá 2/3 enemigos de prueba
+	- Si el usuario falla una pregunta se le resta vida
+	- El usuario puede optar a perder una vida por una pista, una pregunta más facil...
+	- Cada niveles será de 5 preguntas
+	- Cada pregunta tendrá 4 opciones
+	- Si el usuario no consigue superar el nivel diario al día siguiente se enfrenta al mismo nivel
+	- Los personajes tendrán animaciones (recibir daño, atacar, victoria y derrota)
+	- Los niveles se resetan todos los días a las 12
+	- Cuando el usuario pase el nivel se mostrará el tiempo restante para poder volver a jugar
+	- Notificación de disponibilidad de nuevo nivel
