@@ -1,30 +1,40 @@
 Requisitos:
 	- Registro de usuario
-	- Votación de preguntas
-	- No alimenar con muchas preguntas el sistema para mas facilidad
+		- Nombre de usuario (nick) que sea único
+		- Contraseña
+		- Foto de perfil	
 	- Estadisticas del jugador (niveles superados, porcentaje de victorias...)
-	- Ranking general de todos los jugadores
-	- Personalización de personaje
-	- Poder cambiar la foto de perfil y elegir nombre de usuario
-	- El usuario podrá ver el porcentaje de aciertos de cada pregunta
-	- Por cada pregunta saldrá un texto profundizando en el tema de la pregunta
-	- Dificultad de preguntas (fácil, media y dificil)
-	- Combo de preguntas acertadas. Si se lleva un número de preguntas acertadas seguidas el 	  siguiente ataque hace mas daño
+		- Número de niveles superados y porcentaje
+		- Ranking general de todos los jugadores
+		- Base de datos con las estadísticas de los jugadores		
 	- El usuario solo puede intentar superar un nivel por día
-	- Por cada pregunta habrá un límite de tiempo.
-	- El sistema tendrá 2/3 enemigos de prueba
-	- Si el usuario falla una pregunta se le resta vida
-	- El usuario puede optar a perder una vida por una pista, una pregunta más facil...
-	- Cada niveles será de 5 preguntas
-	- Cada pregunta tendrá 4 opciones
-	- Si el usuario no consigue superar el nivel diario al día siguiente se enfrenta al mismo nivel
-	- Los personajes tendrán animaciones (recibir daño, atacar, victoria y derrota)
-	- Los niveles se resetan todos los días a las 12
-	- Cuando el usuario pase el nivel se mostrará el tiempo restante para poder volver a jugar
-	- Notificación de disponibilidad de nuevo nivel
-	- Añadir efectos de sonido (pregunta acertada/fallada, daño recibido, ataque)
-	- Añadir musica de fondo
-	- Añadir opción de silenciar la música de fondo
-	- Añadir logo a la página 
-	- El diseño de la página deberá ser simple y funcional
-	- Investigar sobre personalización del personaje
+		- Que no puedan acceder a otro nivel
+		- Si el usuario no consigue superar el nivel diario al día siguiente se enfrenta al mismo nivel
+		- Cuando el usuario pase el nivel se mostrará el tiempo restante para poder volver a jugar
+		- Los niveles se resetan todos los días a las 12
+		- Notificación de disponibilidad de nuevo nivel
+	- El usuario debe contestar preguntas
+		- Si el usuario falla una pregunta se le resta vida
+		- Combo de preguntas acertadas. Si se lleva un número de preguntas acertadas seguidas el siguiente ataque hace mas daño
+		- Valor fijo de cada pregunta acertada dependiendo de la dificultad
+		- Dificultad de preguntas (fácil, media y dificil)
+		- Por cada pregunta habrá un límite de tiempo.
+		- Por cada pregunta saldrá un texto profundizando en el tema de la pregunta (opcional)
+		- El usuario podrá ver el porcentaje de aciertos de cada pregunta
+		- El usuario puede optar a perder una vida por una pista, una pregunta más facil...
+		- Cada pregunta tendrá 4 opciones
+		- Votación de preguntas (del 0 al 10)
+	- Cada nivel será de 5 preguntas
+		- Las preguntas sean aleatorias dentro de una dificultad
+		- Que las preguntas sean diferentes
+	
+	- Sonido
+		- Añadir efectos de sonido (pregunta acertada/fallada, daño recibido, ataque)
+		- Añadir musica de fondo
+		- Añadir opción de silenciar la música de fondo
+	- Diseño
+		- Añadir logo a la página 
+		- El diseño de la página deberá ser simple y funcional
+		- Personalización de personaje
+		- Los personajes tendrán animaciones (recibir daño, atacar, victoria y derrota)
+	
