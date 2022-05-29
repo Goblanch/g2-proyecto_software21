@@ -17,7 +17,7 @@ export default class Ranking {
             }else{
                 callback({
                     status:true,
-                    protocol:"err",
+                    protocol:"success",
                     data: rows
                 })
             }
