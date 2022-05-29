@@ -78,7 +78,7 @@ const UserController = {
     }, 
 
     Validate: (req, res) => { //Función para validar un token
-        let {token} = req.headers; //Saca la variable token de la petición
+        let {token} = req.body; //Saca la variable token de la petición
        
         const a= new Auth();//Crea un objeto Auth sin ningún parámetro para poder usar el método de validar
         
