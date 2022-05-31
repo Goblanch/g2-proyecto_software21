@@ -1,6 +1,8 @@
 import Auth from "../classes/Auth.js";
 import Pregunta from "../classes/Pregunta.js";
 import Admin from "../classes/Admin.js";
+import Nivel from "../classes/Nivel.js";
+import Usuario from "../classes/Usuario.js";
 
 const PreguntaController = {
     AddPregunta: (req, res) => {
@@ -78,6 +80,62 @@ const PreguntaController = {
             }
         })
 
+    },
+    ConstruirNivel: (req, res)=> {
+        const {token} = req.headers;
+        const a = new Auth();
+        a.Validate(token, (respuesta) => {
+            if (respuesta.status) {
+                const n = new Nivel(3);
+                setTimeout(()=> { //Tiempo de espera entes de enviar la respuesta para que la promesa se pueda cumplir
+                    res.status(200).send({
+                        status:true,
+                        protocol:"success",
+                        data:n.getNivelDiario()
+                    })
+                }, 500);
+
+            const u = new Usuario();
+            u.intentoDiario(token);
+                
+            }else{
+                res.status(500).send({
+                    status: false,
+                    protocol: "err",
+                    message: "Token incorrecto"
+                })
+            }
+        })
+    },
+    ValidarPregunta: (req, res) => {
+        const { id, token, respuestaUsuario } = req.body;
+        const a = new Auth();
+        a.Validate(token, (respuesta) => {
+            if(respuesta.status) {
+                const p = new Pregunta(null, null, null, null, null, id, respuestaUsuario);
+                p.validarPregunta((correcta) => {
+                    if(correcta.status){
+                        res.status(200).send({
+                            status:true,
+                            protocol:"success",
+                            message:"Respuesta correcta"
+                        })
+                    }else{
+                        res.status(300).send({
+                            status:false,
+                            protocol:"err",
+                            message:correcta.message
+                        })
+                    }
+                })
+            }else{
+                res.status(500).send({
+                    status: false,
+                    protocol: "err",
+                    message: "Token incorrecto"
+                })
+            }
+        })
     }
 
 }
