@@ -14,3 +14,6 @@ Tenéis que iros a la ruta http://localhost/phpmyadmin y ahí tendréis el acces
 Arriba hay una pestaña que pone SQL, tenéis que copiar y pegar el contenido del archivo quizgeon.sql de este repositorio, con eso habréis importado la base de datos
 ![image](https://user-images.githubusercontent.com/100932340/170836187-2b063b89-1ab1-42a9-975e-0e1eef4298d1.png)
 ![image](https://user-images.githubusercontent.com/100932340/170836200-3d2a27ed-5a74-49c2-be65-1f66c4fa64ac.png)
+
+
+Para realizar peticiones al servidor, debéis descargaros Postman desde esta web https://www.postman.com/downloads/  Tenéis que poner el tipo de petición (POST o GET). La url es http://localhost:3000/api/v1/(ruta de la petición) y los parámetros se pasan por el body o header, dependiendo del tipo de petición que hagas (puedes verlo en el archivo routes.js)
