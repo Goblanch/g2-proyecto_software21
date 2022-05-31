@@ -10,7 +10,7 @@ const router = express.Router();
 // Rutas `GET`
 router.get("/check-status", UserController.CheckStatus);
 router.get('/ranking', EstadisticasController.TopJugadores);
-
+router.get('/nivel-diario', PreguntaController.ConstruirNivel);
 
 
 //Rutas POST
@@ -19,5 +19,6 @@ router.post("/register", UserController.Register);
 router.post("/add-pregunta", PreguntaController.AddPregunta);
 router.post("/delete-pregunta", PreguntaController.DeletePregunta);
 router.post("/validate-token", UserController.Validate);
+router.post("/validar-pregunta", PreguntaController.ValidarPregunta);
 
 export default router;
