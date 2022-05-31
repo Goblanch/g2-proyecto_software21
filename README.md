@@ -3,7 +3,7 @@ Para ejecutar el Backend:
 
 Tenéis que tener instalado https://nodejs.org/es/ la versión 16.15.0
 Una vez instalado vais al visual studio y seleccionais la carpeta del Backend.
-Vais a terminal, nuevo terminal y dentro de él ejecutáis el comando "npm i" y lugeo el comando "node app.js"
+Vais a terminal, nuevo terminal y dentro de él ejecutáis el comando "cd backend" luego "npm i" y lugeo el comando "node app.js"
 
 Para abrir el Frontend:
 Tenéis que tener instalado el Apache y MySQL, para ello vais a esta web y descargáis Xampp https://www.apachefriends.org/es/index.html
