@@ -7,8 +7,12 @@ import cors from 'cors';
 // Importando rutas
 import rutas from './routes/routes.js';
 
+//Importando clases
+import Tarea from './classes/Tarea.js';
+
 const app = express();
 const PORT = 3000;
+const t = new Tarea(); //Inicializa las tareas del servidor
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
