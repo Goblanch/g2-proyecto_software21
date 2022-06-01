@@ -3,10 +3,12 @@ Para ejecutar el Backend:
 
 Tenéis que tener instalado https://nodejs.org/es/ la versión 16.15.0
 Una vez instalado vais al visual studio y seleccionais la carpeta del Backend.
-Vais a terminal, nuevo terminal y dentro de él ejecutáis el comando "cd backend" luego "npm i" y lugeo el comando "node app.js"
+Vais a terminal, nuevo terminal y dentro de él ejecutáis el comando "cd backend" luego "npm i" y lugeo el comando "node app.js". Si queréis que se reinicie cada vez que hagáis un cambio en el código, debéis poner el comando "npm start" en lugar de "node app.js".
 
-Para abrir el Frontend:
-Tenéis que tener instalado el Apache y MySQL, para ello vais a esta web y descargáis Xampp https://www.apachefriends.org/es/index.html
+Para abrir el Frontend-React:
+Descargáis la carpeta y la tenéis que abrir con el visual studio. Una vez dentro, le dais a nueva terminal, ponéis el comando "cd frontend-react" y luego el comando "npm install" si es la primera vez que lo ejecutáis. Una vez termine de instalarse todo, tenéis que poner el comando "npm start" y se os abrirá en el navegador una web con la url http://localhost:3000 en el que podréis ver la interfaz de usuario. Para que funcione correctamente debéis tener ejecutándose el Backend también.
+
+Tenéis que tener instalado el Apache y MySQL, para ello vais a esta web y descargáis Xampp https://www.apachefriends.org/es/index.html .
 Una vez instalado, se os abrirá un panel en el que tenéis que iniciar los dos primeros tal como se ve en la imagen.
 ![foto](https://user-images.githubusercontent.com/100932340/170835935-b6140aac-2117-45bb-a35e-e187858b8f73.jpg)
 
