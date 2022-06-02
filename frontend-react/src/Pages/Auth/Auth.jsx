@@ -21,8 +21,8 @@ export default function Auth() {
                     <div className="slide-controls">
                         <input type="radio" name="slide" id="login" readOnly checked={checked} />
                             <input type="radio" name="slide" id="signup" readOnly checked={!checked}/>
-                                <Link to={'/auth/login'} onClick={() => setChecked(!checked)} className="slide login">Iniciar sesión</Link>
-                                <Link to={'/auth/register'} onClick={() => setChecked(!checked)} className="slide signup">Registro</Link>
+                                <Link to={'/auth/login'} onClick={() => (!checked) ? setChecked(!checked) : ""} className="slide login">Iniciar sesión</Link>
+                                <Link to={'/auth/register'} onClick={() => (checked) ? setChecked(!checked): ""} className="slide signup">Registro</Link>
                                 <div className="slider-tab"></div>
                             </div>
                             <div className="form-inner">

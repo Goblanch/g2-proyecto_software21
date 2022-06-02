@@ -14,20 +14,21 @@ export default function Global() {
         });
     }, []);
 
-    console.log(accountInformation);
-
-
     if(!window.localStorage.getItem("token") || accountInformation === false) {
         window.location.href = "/";
-    } 
+    }
+
+    if(window.location.pathname === "/app" || window.location.pathname === "/app/") {
+        return window.location.href = "/app/inicio";
+    }
 
     if(accountInformation === undefined) {
-        return <p>Cargando</p>
+        return <p>Cargando</p>;
     } else {
         return (
             <>
             
-                <Outlet />
+                <Outlet context={[accountInformation, setAccountInformation]} />
             
             </>
         );

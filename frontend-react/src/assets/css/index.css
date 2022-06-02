@@ -1,5 +1,3 @@
-
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -13,10 +11,28 @@ body {
   place-items: center;
   background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
 }
-
-
-
-
+#root{
+  
+  align-content: space-evenly;
+}
+a{
+  text-decoration: none;
+  color:black;
+}
+header{
+  display:grid;
+  place-items: center;
+  justify-content: center;
+}
+header img {
+  width:300px;
+}
+header div{
+  font-size: 2em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: white;
+}
 
 button {
 
@@ -25,13 +41,28 @@ button {
   height: auto;
   background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
 }
-
 main {
   display: flex;
   flex-direction: column;
   transform: rotatex(10deg);
 
 }
+.datatable {
+  display: block;
+  width:80% !important;
+ 
+
+}
+@media screen and (max-width: 767px) {
+  .datatable {
+    width: 100% !important;
+    height: auto;
+    margin: .5em auto;
+    text-align: center;
+  }
+}
+
+
 
 .botones {
   display: block;
@@ -53,6 +84,7 @@ main {
   mix-blend-mode: color-dodge;
   transform-style: preserve-3d;
   transition: all .2s ease-in-out;
+
 }
 
 .botones:hover {
@@ -194,11 +226,6 @@ main {
   animation-play-state: paused;
 }
 
-#admin{
-  display:none;
-}
-
-
 @media screen and (max-width: 767px) {
   .botones {
     width: 80%;
@@ -213,4 +240,3 @@ main {
   }
 
 }
-

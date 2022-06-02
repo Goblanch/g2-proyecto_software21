@@ -17,9 +17,7 @@ export default function Router() {
 
         <>
             <BrowserRouter>
-
                 <Routes>
-
                     <Route path='/' element={<Redireccion />}></Route>
                     <Route path='/auth' element={<Auth />}>
                         <Route path='/auth/login' element={<Login />} />

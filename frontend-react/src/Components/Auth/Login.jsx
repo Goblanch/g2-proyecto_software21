@@ -18,6 +18,7 @@ export default function Login() {
         e.preventDefault();
 
         if(user && password) {
+            
             let data = {
             
                 user: user,
