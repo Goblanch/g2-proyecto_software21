@@ -13,6 +13,13 @@ export default class Usuario {
         }
     }
 
+    sumarAcierto(token){
+        let sql = "UPDATE users SET numAcierto = numAcierto + 1 WHERE token =?";
+        pool.query(sql, [token], (err) => {
+            if (err) return console.log(err);
+        })
+    }
+
     intentoDiario(token) {
         let sql = "UPDATE users SET intentoDiario = false WHERE token = ?";
         pool.query(sql, [token], (err) => {
