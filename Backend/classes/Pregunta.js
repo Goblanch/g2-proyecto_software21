@@ -17,7 +17,21 @@ export default class Pregunta {
         }
 
     }
-    
+    getPreguntaPorId(id, callback) {
+        let sql = "SELECT * FROM preguntas WHERE id =?";
+        pool.query(sql, [id], (err, rows) => {
+            if(err) {console.log(err); callback({status:false,protocol:"err", message:"Hubo un error con la base de datos"});}
+            callback({status:true, protocol:"success", data:rows})
+        })
+    }
+
+    devolverPreguntas(callback) {
+        let sql = "SELECT id, pregunta, opciones, respuestaCorrecta, inforRelevante, dificultad FROM preguntas";
+        pool.query(sql, [], (err, rows) => {
+            if(err) {console.log(err); callback({status:false,protocol:"err", message:"Hubo un error con la base de datos"});}
+            callback({status:true, protocol:"success", data:rows})
+        })
+    }
 
     validarPregunta(callback) {
         let sql = "SELECT * FROM preguntas WHERE id = ? AND respuestaCorrecta = ?";
