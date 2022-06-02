@@ -11,6 +11,7 @@ const router = express.Router();
 router.get("/check-status", UserController.CheckStatus);
 router.get('/ranking', EstadisticasController.TopJugadores);
 router.get('/nivel-diario', PreguntaController.ConstruirNivel);
+router.get('/estadistica', EstadisticasController.EstadisticaJugador);
 
 
 //Rutas POST
