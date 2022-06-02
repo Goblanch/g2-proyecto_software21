@@ -21,5 +21,7 @@ router.post("/add-pregunta", PreguntaController.AddPregunta);
 router.post("/delete-pregunta", PreguntaController.DeletePregunta);
 router.post("/validate-token", UserController.Validate);
 router.post("/validar-pregunta", PreguntaController.ValidarPregunta);
+router.post('/preguntas', PreguntaController.DevolverPreguntas);
+router.post('/pregunta-id', PreguntaController.PreguntaPorID);
 
 export default router;
