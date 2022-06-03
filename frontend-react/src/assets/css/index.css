@@ -15,10 +15,13 @@ body {
   
   align-content: space-evenly;
 }
+
 a{
   text-decoration: none;
   color:black;
 }
+
+
 header{
   display:grid;
   place-items: center;
@@ -34,7 +37,7 @@ header div{
   color: white;
 }
 
-button {
+.botones {
 
 
   width: auto;
@@ -50,8 +53,7 @@ main {
 .datatable {
   display: block;
   width:80% !important;
- 
-
+  box-shadow:0 0 15px rgba(0, 0, 0, .4);
 }
 @media screen and (max-width: 767px) {
   .datatable {
@@ -84,6 +86,8 @@ main {
   mix-blend-mode: color-dodge;
   transform-style: preserve-3d;
   transition: all .2s ease-in-out;
+
+  box-shadow:0 0 15px rgba(0, 0, 0, .4) !important;
 
 }
 
@@ -239,4 +243,32 @@ main {
     margin: .5em auto;
   }
 
+}
+
+.btn-mod {
+  margin-right: 15px;
+  margin-top: 13px;
+  margin-bottom: 13px;
+  padding: 0.5em;
+  border: 0px solid;
+  border-radius: 0 10px 0 10px;
+  color: #fff;
+  box-shadow: 0 0 14px ;
+  transition: all .3s ease-in-out;
+}
+
+.btn-borrar {
+  background-color:rgb(194, 16, 60) !important;
+}
+
+.btn-ver {
+  background-color: #48c6ef;
+}
+
+.btn-mod:hover {
+  transform:scale(1.1,1.1);
+  -webkit-transform:scale(1.1,1.1);
+  -moz-transform:scale(1.1,1.1);
+  box-shadow: 0 0 7px #000;
+  cursor: pointer;
 }

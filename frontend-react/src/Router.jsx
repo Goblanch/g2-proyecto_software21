@@ -8,8 +8,6 @@ import Login from './Components/Auth/Login';
 import Register from './Components/Auth/Register';
 import Inicio from './Pages/Home/Inicio';
 import Admin from './Pages/Admin/Admin';
-import Add from './Components/Admin/add';
-import Delete from './Components/Admin/delete';
 import Global from './Pages/Global/Global';
 
 export default function Router() {
@@ -25,10 +23,7 @@ export default function Router() {
                     </Route>
                     <Route path='/app' element={<Global />}>
                         <Route path='/app/inicio' element={<Inicio />}></Route>
-                        <Route path='/app/admin' element={<Admin />}>
-                            <Route path='/app/admin/add' element={<Add />} />
-                            <Route path='/app/admin/delete' element={<Delete />} />
-                        </Route>
+                        <Route path='/app/admin' element={<Admin />}></Route>
                     </Route>
                 </Routes>
 

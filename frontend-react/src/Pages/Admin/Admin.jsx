@@ -49,7 +49,7 @@ export default function Admin() {
         },
         {
             name: "Moderación",
-            selector: (row) => <><button onClick={(e) => { e.preventDefault(); deleteQuestion(row.id) }}>Borrar</button><button onClick={(e) => { e.preventDefault(); viewAnswers(row.id) }}>Ver</button></>
+            selector: (row) => <><button className='btn-mod btn-borrar' onClick={(e) => { e.preventDefault(); deleteQuestion(row.id) }}>Borrar</button><button className='btn-mod btn-ver' onClick={(e) => { e.preventDefault(); viewAnswers(row.id) }}>Ver</button></>
         }
     ];
 
@@ -88,7 +88,7 @@ export default function Admin() {
                     Swal.showValidationMessage(`Por favor, rellena todos los campos`);
                 } else {
                     let opciones = { "a": A, "b": B, "c": C, "d": D };
-                    
+                    console.log(opciones)
                     return { token: window.localStorage.getItem("token"), pregunta: pregunta, opciones: opciones, respuestaCorrecta: respuestaCorrecta, inforRelevante: inforRelevante, dificultad: dificultad }
                 }
             }
@@ -121,9 +121,8 @@ export default function Admin() {
             confirmButtonText: 'Borrar',
             confirmButtonColor: '#d33',
         }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                axios.post(`${API_URL}/delete-pregunta`, { token: window.localStorage.getItem("token"), id: id}).then((res) => {
+                axios.post(`${API_URL}/delete-pregunta`, { token: window.localStorage.getItem("token"), id: id }).then((res) => {
 
                     axios.post(`${API_URL}/preguntas`, { token: window.localStorage.getItem("token") }).then((res) => {
 
@@ -150,7 +149,7 @@ export default function Admin() {
             Swal.fire({
                 title: '<strong>' + res.data.data[0].pregunta + '</strong>',
                 icon: 'info',
-                html: '<p>A: ' + respuestas.a + '</p><p>B: ' + respuestas.b + '</p><p>C: ' + respuestas.c + '</p><p>D: ' + respuestas.d + '</p><p><strong>Respuesta correcta: ' + res.data.data[0].respuestaCorrecta + '</strong></p>'
+                html: '<p>A: ' + respuestas.a + '</p><p>B: ' + respuestas.b + '</p><p>C: ' + respuestas.c + '</p><p>D: ' + respuestas.d + '</p><p><strong>Respuesta correcta: ' + res.data.data[0].respuestaCorrecta.toUpperCase() + '</strong></p>'
             });
         }).catch(err => {
             Swal.fire(
@@ -168,7 +167,7 @@ export default function Admin() {
 
         return (
             <>
-                <button className="botones" onClick={(e) => { e.preventDefault(); addQuestion() }}>Añadir pregunta</button>
+                <button className="botones" onClick={(e) => { e.preventDefault(); addQuestion(); }}>Añadir pregunta</button>
                 <main className="datatable">
 
                     <DataTable

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2';
+import '../../assets/css/colored_toasts.css';
+
 
 // Importando archivo de configuración
 const config = require("../../config.json");
@@ -13,6 +14,18 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [verifyPassword, setVerifyPassword] = useState("");
 
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-right',
+        iconColor: 'white',
+        customClass: {
+            popup: 'colored-toast'
+        },
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true
+    });
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -23,30 +36,36 @@ export default function Register() {
                 password: password
             }
 
-            axios.post(`${API_URL}/register`, data).then((res) => {
+            axios.post(`${API_URL}/register`, data).then(async (res) => {
 
-                if(res.data.status) {
+                if (res.data.status) {
                     window.localStorage.setItem("token", res.data.data.token);
-    
-                    return window.location.href = '/app';
-                } 
 
-            }).catch((err) => {
-                notify(err.response.data.message);
+                    await Toast.fire({
+                        icon: 'success',
+                        title: 'Registrado correctamente, cargando...'
+                    }).then(() => {
+                        return window.location.href = '/app';
+                    });
+                }
+
+            }).catch(async (err) => {
+                await Toast.fire({
+                    icon: 'error',
+                    title: err.response.data.message
+                });
             });
 
         } else {
-            notify("Las contraseñas no coinciden. y/o te falta rellenar todos los campos.");
+            Toast.fire({
+                icon: 'error',
+                title: "Las contraseñas no coinciden. y/o te falta rellenar todos los campos."
+            });
         }
     }
 
-    const notify = (error) => {
-        toast(error);
-    };
-
     return (
         <>
-            <ToastContainer />
             <section className="signup">
                 <form onSubmit={handleSubmit}>
                     <div className="field">
