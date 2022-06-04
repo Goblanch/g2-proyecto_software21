@@ -273,3 +273,8 @@ main {
   box-shadow: 0 0 7px #000;
   cursor: pointer;
 }
+
+.p-stats {
+  color: white;
+  font-size: 20px;
+}

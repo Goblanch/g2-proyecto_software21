@@ -74,8 +74,10 @@ export default function Play() {
         }
 
         const validarPregunta = (opcion) => {
-
+            
             setReiniciarCronometro(true);
+
+            document.getElementById('btn-info-xd').style.display = 'none';
 
             axios.post(`${API_URL}/validar-pregunta`, { id: questions.Preguntas[position].id, token: window.localStorage.getItem("token"), respuestaUsuario: opcion }).then((res) => {
 
@@ -180,6 +182,7 @@ export default function Play() {
                         childElement.removeAttribute("disabled");
                     });
                 });
+                document.getElementById('btn-info-xd').style.display = 'inline';
             }
 
         }
@@ -199,7 +202,7 @@ export default function Play() {
                     {corazones} <br />
                 </div>
                 <div className="question">
-                    {questions.Preguntas[position].pregunta} &nbsp;&nbsp;     <FaInfoCircle onClick={() => showRelevantInformation()} />
+                    {questions.Preguntas[position].pregunta} &nbsp;&nbsp;     <FaInfoCircle onClick={() => showRelevantInformation()} id="btn-info-xd" />
                 </div>
                 <form className="quiz quiz-in-game">
 

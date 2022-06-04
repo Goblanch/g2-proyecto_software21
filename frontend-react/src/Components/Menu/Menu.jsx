@@ -6,9 +6,12 @@ import '../../assets/css/colored_toasts.css';
 
 // Importamos esto para poder validar el intento diario, ya que en el contexto no se actualiza si no se re-renderiza de nuevo la página.
 import tokenValidation from '../../Components/Functions/TokenValidation';
+import axios from 'axios';
+
+const config = require("../../config.json");
+const API_URL = config.API_URL;
 
 export default function Menu(props) {   
-    
 
     const logout = () => {
 
@@ -54,6 +57,55 @@ export default function Menu(props) {
 
     }
 
+    const displaySettings = () => {
+
+        Swal.fire({
+            title: 'Cambiar contraseña.',
+            html: `<input type="password" id="contrasenaActual" class="swal2-input" placeholder="Contraseña actual.">
+            <input type="password" id="nuevaContrasena" class="swal2-input" placeholder="Nueva contraseña">
+            `,
+            confirmButtonText: 'Cambiar',
+            focusConfirm: false,
+            preConfirm: () => {
+                const contrasenaActual = Swal.getPopup().querySelector('#contrasenaActual').value;
+                const nuevaContrasena =  Swal.getPopup().querySelector('#nuevaContrasena').value;
+
+                if(!contrasenaActual || !nuevaContrasena) {
+                    Swal.showValidationMessage(`Por favor, rellena todos los campos`);
+                } else {
+                    
+                    return {
+                        token: window.localStorage.getItem("token"),
+                        user: props.user,
+                        antiguaContrasena: contrasenaActual,
+                        nuevaContrasena: nuevaContrasena
+                    }
+
+                }
+            }
+        }).then((result) => {
+
+            if(result.value) {
+                axios.post(`${API_URL}/cambiar-contrasena`, result.value).then((res) => {
+                    if(res.data.status) {
+                        
+                        window.localStorage.removeItem("token");
+                        window.localStorage.setItem("token", res.data.token);
+                        Swal.fire('Se ha actualizado la contraseña.').then(() => {
+                            window.location.href = "/";
+                        });
+
+                    }
+                }).catch(err => {
+                   
+                    Swal.fire(err.response.data.message)
+                });
+            }
+
+        });
+
+    }
+
     return (
         <>
 
@@ -69,8 +121,8 @@ export default function Menu(props) {
                     <span></span>
                     <span></span>
                     <span></span></button>
-                <button className="botones">Estadísticas</button>
-                <button className="botones">Ajustes</button>
+                <Link className="botones" to={'/app/estadisticas'}>Estadísticas</Link>
+                <button onClick={(e) => {e.preventDefault(); displaySettings();}} className="botones">Ajustes</button>
                 {props.rank === "1" ? (
                     <Link id="admin" to={"/app/admin/"} className="botones">Gestionar preguntas</Link>
                 ) : (
