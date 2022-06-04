@@ -9,6 +9,7 @@ import Register from './Components/Auth/Register';
 import Inicio from './Pages/Home/Inicio';
 import Admin from './Pages/Admin/Admin';
 import Global from './Pages/Global/Global';
+import PlayGlobal from './Pages/Play/PlayGlobal';
 
 export default function Router() {
     return (
@@ -24,6 +25,7 @@ export default function Router() {
                     <Route path='/app' element={<Global />}>
                         <Route path='/app/inicio' element={<Inicio />}></Route>
                         <Route path='/app/admin' element={<Admin />}></Route>
+                        <Route path='/app/play' element={<PlayGlobal />}></Route>
                     </Route>
                 </Routes>
 

@@ -10,7 +10,7 @@ export default function Global() {
         tokenValidation(window.localStorage.getItem("token")).then((res) => {
             setAccountInformation(res);
         }).catch((err) => {
-            setAccountInformation(false)
+            setAccountInformation(false);
         });
     }, []);
 
@@ -23,8 +23,9 @@ export default function Global() {
     }
 
     if(accountInformation === undefined) {
-        return <p>Cargando</p>;
+        return <p>Cargando...</p>;
     } else {
+
         return (
             <>
             
@@ -32,5 +33,6 @@ export default function Global() {
             
             </>
         );
+
     }
 }
