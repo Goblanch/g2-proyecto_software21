@@ -1,86 +1,115 @@
--- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
+-- phpMyAdmin SQL Dump
+-- version 4.6.6deb5ubuntu0.5
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: quizzgeon
--- ------------------------------------------------------
--- Server version	10.4.24-MariaDB
+-- Servidor: localhost:3306
+-- Tiempo de generación: 04-06-2022 a las 12:17:54
+-- Versión del servidor: 5.7.38-0ubuntu0.18.04.1
+-- Versión de PHP: 7.2.24-0ubuntu0.18.04.11
+CREATE DATABASE `quizgeon`;
+USE `quizgeon`;
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `preguntas`
+-- Base de datos: `quizgeon`
 --
-CREATE DATABASE `quizgeon`;
-USE `quizgeon`;
 
-DROP TABLE IF EXISTS `preguntas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `preguntas`
+--
+
 CREATE TABLE `preguntas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `pregunta` varchar(255) NOT NULL,
-  `opciones` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`opciones`)),
+  `opciones` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `respuestaCorrecta` varchar(1) NOT NULL,
   `inforRelevante` varchar(255) NOT NULL,
   `dificultad` int(1) NOT NULL,
-  `disponible` tinyint(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `disponible` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `preguntas`
+-- Volcado de datos para la tabla `preguntas`
 --
 
-LOCK TABLES `preguntas` WRITE;
-/*!40000 ALTER TABLE `preguntas` DISABLE KEYS */;
-INSERT INTO `preguntas` VALUES (3,'¿Pregunta1?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',0,1),(4,'¿Pregunta2?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',0,1),(5,'¿Pregunta3?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',0,1),(6,'¿Pregunta24?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',0,1),(7,'¿Pregunta25?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',0,1),(8,'¿Pregunta26?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',1,1),(9,'¿Pregunta27?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',1,1),(10,'¿Pregunta28?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',1,1),(11,'¿Pregunta29?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',1,1),(12,'¿Pregunta12?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',1,1),(13,'¿Pregunta23?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',1,1),(14,'¿Pregunta233?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',2,1),(15,'¿Pregunta23?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',2,1),(16,'¿Pregunta2444?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',2,1),(17,'¿Pregunta12?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',2,1),(18,'¿Pregunta123?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',2,1),(19,'¿Pregunta9?','{\"a\":\"123\", \"b\":\"456\", \"c\":\"789\",\"d\":\"1232\"}','a','d',2,1);
-/*!40000 ALTER TABLE `preguntas` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `preguntas` (`id`, `pregunta`, `opciones`, `respuestaCorrecta`, `inforRelevante`, `dificultad`, `disponible`) VALUES
+(28, '¿Cuál es la flor nacional de Japón?', '{\"a\":\"Rosa\",\"b\":\"Flor de Cerezo\",\"c\":\"Margarita\",\"d\":\"Clavel\"}', 'b', 'Esta flor o «sakura» es la flor nacional y símbolo de Japón. Las frágiles flores que este contiene en la época del Hanabi,son el símbolo de lo bella que es la primavera', 0, 1),
+(30, '¿Cuál es el animal nacional de Australia?', '{\"a\":\"Oso\",\"b\":\"León\",\"c\":\"Canguro\",\"d\":\"Ornitorrinco\"}', 'c', 'Se estima que hay entre 40 y 50 millones de animales de esta especie en Australia. Es un animal de tal importancia que incluso aparece en el escudo australiano.', 0, 1),
+(31, '¿Cuántos días le toma a la tierra dar una vuelta a la órbita del sol?', '{\"a\":\"365\",\"b\":\"360\",\"c\":\"300\",\"d\":\"370\"}', 'a', 'Este recorrido, que se conoce como movimiento de traslación.', 0, 1),
+(32, '¿Cuál de los siguientes imperios no tenía un idioma escrito?', '{\"a\":\"Inca\",\"b\":\"Aztecas\",\"c\":\"Egipcios\",\"d\":\"Maya\"}', 'a', 'La transmisión de ideas en el imperio se hacía en base a señales o marcas adheridos a unas cuerda de lana o algodón denominadas \"\"quipu\"\".', 2, 1),
+(33, '¿Cómo se llamaba Istanbul antes de 1923?', '{\"a\":\"Istanbul 2.0\",\"b\":\"Constantinopla\",\"c\":\"Estambul\",\"d\":\"Bizanzio\"}', 'b', 'La ciudad tenía ese nombre en honor a su emperador, que la hizo capital del imperio romano en el año 333 d.C.', 1, 1),
+(34, '¿Cuál es el país más grande del mundo?', '{\"a\":\"China\",\"b\":\"Rusia\",\"c\":\"India\",\"d\":\"Canadá\"}', 'b', 'Este país tiene una extensión de 17,1 millones de km cuadrados y tiene una población de 144 millones de habitantes.', 0, 1),
+(35, '¿De qué ciudad son originarios los Beatles?', '{\"a\":\"Londres\",\"b\":\"Dublín\",\"c\":\"Liverpool\",\"d\":\"Manchester\"}', 'c', 'La famosa banda de rock británica se formó a principios de los años 60 y se disolvió oficialmente en 1970.', 1, 1),
+(36, '¿Cuántas teclas tiene un piano?', '{\"a\":\"100\",\"b\":\"88\",\"c\":\"90\",\"d\":\"61\"}', 'b', 'Aunque hay pianos con 49 o 61 teclas, los pianos estándares y de mayor calidad están formados por otro número de teclas.', 2, 1),
+(37, '¿Qué artista pinto el techo de la Capilla Sixtina en Roma?', '{\"a\":\"Miguel Ángel\",\"b\":\"Dalí\",\"c\":\"Leonardo da Vinci\",\"d\":\"Monet\"}', 'a', 'El artista italiano pintó los frescos de la bóveda de la capilla Sixtina entre 1508 y 1512.', 0, 1),
+(38, '¿Cuál es el nombre del río más largo del mundo?', '{\"a\":\"Río Nilo\",\"b\":\"Río Amazonas\",\"c\":\"Río Danubio\",\"d\":\"Río Volga\"}', 'b', 'El Amazonas se encuentra en América del Sur y tiene una longitud de unos 6800 km.', 1, 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `user` varchar(32) NOT NULL,
   `password` varchar(64) NOT NULL,
   `token` varchar(255) NOT NULL,
-  `rank` int(11) NOT NULL DEFAULT 0,
-  `intentoDiario` tinyint(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `rank` int(11) NOT NULL DEFAULT '0',
+  `intentoDiario` tinyint(1) NOT NULL DEFAULT '1',
+  `numAcierto` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin','40bd001563085fc35165329ea1ff5c5ecbdbbeef','7af2d10b73ab7cd8f603937f7697cb5fe432c7ff',1,0),(2,'123','7782391677c36f0f0e77363c7ef182e4e75e7669','1748c45ca3a8d8a106f8b5ef64ac001f6bc7b968',0,0),(26,'Ivan','40bd001563085fc35165329ea1ff5c5ecbdbbeef','3c95a03c691edde894ac7bbf1a1628f92b1f1448',0,1),(27,'Jorge','40bd001563085fc35165329ea1ff5c5ecbdbbeef','8e94a9dd2203d51b97dab7e1afa70ad3abe252dc',0,1);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `users` (`id`, `user`, `password`, `token`, `rank`, `intentoDiario`, `numAcierto`) VALUES
+(1, 'Admin', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '7af2d10b73ab7cd8f603937f7697cb5fe432c7ff', 1, 1, 3),
+(32, 'skippy', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '47211fc10a490e5130328edcca8e423cfdcf8e16', 0, 1, 0),
+(34, 'Blas', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2364479c6b503aac977dca0e850cfb65c976c88c', 0, 1, 8),
+(35, 'lol', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '99efc50a9206bde3d7a8e694aad8e138ca7dc3f7', 0, 0, 3);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2022-05-31 19:27:04
