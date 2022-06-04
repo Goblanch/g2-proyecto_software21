@@ -74,7 +74,7 @@ const PreguntaController = {
                     }
                 });
             } else {
-                res.status(500).send({
+                res.status(300).send({
                     status: false,
                     protocol: "err",
                     message: "El usuario no es administrador"
@@ -101,7 +101,7 @@ const PreguntaController = {
                 u.intentoDiario(token);
 
             } else {
-                res.status(500).send({
+                res.status(300).send({
                     status: false,
                     protocol: "err",
                     message: "Token incorrecto"
@@ -133,7 +133,7 @@ const PreguntaController = {
                     }
                 })
             } else {
-                res.status(500).send({
+                res.status(300).send({
                     status: false,
                     protocol: "err",
                     message: "Token incorrecto"
