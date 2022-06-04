@@ -56,7 +56,7 @@ export default class Auth {
             if (err) return callback({ status: false, protocol: "err", message: "Hubo un error al registrarse" }); //Devuelve error si hay algún problema interno con la base de datos
             if (rows.length <= 0) { //Si no existe el usuario, lo intenta registrar
                 let sql = "INSERT INTO users (user, password, token) VALUES (?, ?, ?)";
-                pool.query(sql, [this.user.getUser(), this.user.getEncryptedPwd(), this.user.getToken()], (err, rows) => {
+                pool.query(sql, [this.user.getUser(), this.user.getEncryptedPwd(), this.user.getToken()], (err) => {
                     if (err) { //Si ocurre un error interno con la base de datos
                         console.log(err);
                         callback({ status: false, protocol: "err", message: "Hubo un error al registrarse" });
@@ -72,21 +72,22 @@ export default class Auth {
     }
 
     Validate(token, callback) { //Función para validar un token
+
         let sqlBusqueda = "SELECT * FROM users WHERE token = ?"; //búsqueda en la base de datos
         pool.query(sqlBusqueda, [token], (err, rows) => {
             if (err) { //Error con la base de datos
                 console.log(err)
                 callback({ status: false, protocol: "err", message: "Error con la base de datos" });
-            }
-            if (rows.length <= 0) { //Si no encuentra nada en la base de datos
+            }else if (rows.length <= 0) { //Si no encuentra nada en la base de datos
                 callback({ status: false, protocol: "err", message: "Token incorrecto" });
             } else {//Si encuentra el token en la base de datos
-                callback({ status: true, protocol: "success", data: { user: rows[0].user, token: rows[0].token, rank: rows[0].rank.toString() } });
+                callback({ status: true, protocol: "success", data: { user: rows[0].user, token: rows[0].token, rank: rows[0].rank.toString(), intentoDiario: rows[0].intentoDiario } });
             }
         });
     }
 
-    Admin(token, callback){
+    Admin(token, callback) {
+
         let sqlBusqueda = "SELECT * FROM users WHERE token = ?"; //búsqueda en la base de datos
         pool.query(sqlBusqueda, [token], (err, rows) => {
             if (err) { //Error con la base de datos
@@ -96,8 +97,29 @@ export default class Auth {
             if (rows.length <= 0 || rows[0].rank === 0) { //Si no encuentra nada en la base de datos
                 callback({ status: false, protocol: "err", message: "Token incorrecto" });
             } else {//Si encuentra el token en la base de datos
-                callback({ status: true, protocol: "success"});
+                callback({ status: true, protocol: "success" });
             }
         });
     }
+
+    actualizarContrasena(user, nuevaContrasena, nuevoToken, callback) {
+
+        let sql = "UPDATE users SET password = ?, token = ? WHERE user = ?";
+        pool.query(sql, [nuevaContrasena, nuevoToken, user], (err) => {
+            if (err) return callback({
+                status: false,
+                protocol: "err",
+                message: "Hubo un error con la base de datos"
+            })
+            callback({
+                status: true,
+                protocol: "success",
+                token: nuevoToken
+            })
+
+        })
+
+    }
+
+
 }

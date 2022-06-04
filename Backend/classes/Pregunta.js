@@ -34,7 +34,7 @@ export default class Pregunta {
     }
 
     validarPregunta(callback) {
-        let sql = "SELECT * FROM preguntas WHERE id = ? AND respuestaCorrecta = ?";
+        let sql = "SELECT * FROM preguntas WHERE id = ?";
         pool.query(sql, [this.id, this.respuesta], (err, rows) => {
             if (err) {
                 console.log(err);
@@ -43,16 +43,11 @@ export default class Pregunta {
                     protocol:"err",
                     message:"Hubo un error con la base de datos"
                 })
-            }else if(rows.length <=0){
-                callback({
-                    status:false,
-                    protocol:"err",
-                    message:"La respuesta es incorrecta"
-                })
-            }else{
+            } else{
                 callback({
                     status:true,
-                    protocol:"success"
+                    protocol:"success",
+                    respuesta: rows[0].respuestaCorrecta
                 })
             }
         })

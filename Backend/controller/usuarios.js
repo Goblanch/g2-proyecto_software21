@@ -16,10 +16,9 @@ const UserController = {
 
         // Sacamos del body la variable usuario y contraseña
         let { user, password } = req.body;
-
         // Inicializamos el objeto Usuario.
         const u = new Usuario(user, password);
-        const a= new Auth(u); //Creamos un objeto de tipo Auth en el que le damos como parámetro el usuario para poder autenticarlo
+        const a = new Auth(u); //Creamos un objeto de tipo Auth en el que le damos como parámetro el usuario para poder autenticarlo
 
         a.login((validado) => { //analizamos la respuesta recibida al iniciar sesión con ese usuario
             if (validado.status) {
@@ -29,18 +28,18 @@ const UserController = {
                     protocol: "success",
                     data: validado.data
                 });
-    
+
             } else {
                 res.status(300).send({ //Si el estado es false, envía un objeto como respuesta con el mensaje de error y el estado
                     status: false,
                     protocol: "err",
                     message: validado.message
                 });
-    
+
             }
 
         });
-        
+
     },
     Register: (req, res) => {
         //Comprueba que la petición enviada tenga un nombre y una contraseña
@@ -48,7 +47,7 @@ const UserController = {
         if (user && password) {
             //Crea un objeto usuario con ese nombre y contraseña
             const u = new Usuario(user, password);
-            const a= new Auth(u);
+            const a = new Auth(u);
             a.Register((respuesta) => { //Utiliza el método Register para registrar al usuario y analiza la respuesta recibida desde callback
                 if (!respuesta.status) {
 
@@ -75,31 +74,84 @@ const UserController = {
             });
         }
 
-    }, 
+    },
 
     Validate: (req, res) => { //Función para validar un token
-        let {token} = req.body; //Saca la variable token de la petición
-       
-        const a= new Auth();//Crea un objeto Auth sin ningún parámetro para poder usar el método de validar
+
+
+        let { token } = req.body; //Saca la variable token de la petición
+
+        const a = new Auth();//Crea un objeto Auth sin ningún parámetro para poder usar el método de validar
+
+        a.Validate(token, (exist) => { //Comprueba si el token es válido y le manda la respuesta a la variable exists
+
+            if (exist.status) {  //Si el estado es true, manda al usuario un mensaje de que la sesión es válida
+
+                res.status(200).send({
+                    status: true,
+                    protocol: "success",
+                    message: "Logueado",
+                    data: exist.data
+                });
+            } else {
+
+                res.status(300).send({ //Si el token no es válido, manda un mensaje de error al usuario
+                    status: false,
+                    protocol: "err",
+                    message: exist.message
+                });
+            }
+        });
+
+    },
+    CambiarContrasena: (req, res) => {
+        const {token, user, nuevaContrasena, antiguaContrasena} = req.body;
+        const a = new Auth();//Crea un objeto Auth sin ningún parámetro para poder usar el método de validar
+
+        a.Validate(token, (exist) => { //Comprueba si el token es válido y le manda la respuesta a la variable exists
+
+            if (exist.status) { 
+               const u = new Usuario(user, antiguaContrasena);
+               const auth = new Auth(u);
+               auth.login((validado) => { //analizamos la respuesta recibida al iniciar sesión con ese usuario
+                if (validado.status) {
+                    const nuevoUsuario = new Usuario(user, nuevaContrasena);
+                    auth.actualizarContrasena(user, nuevoUsuario.getEncryptedPwd(), nuevoUsuario.getToken(), (resultado) => {
+                        if(resultado.status) {
+                            res.status(200).send({
+                                status: true,
+                                protocol:"success",
+                                token: resultado.token
+                            })
+                        }else{
+                            res.status(300).send({ //Si el token no es válido, manda un mensaje de error al usuario
+                                status: false,
+                                protocol: "err",
+                                message: resultado.message
+                            });
+                        }
+                    });
+                } else {
+                    res.status(300).send({ //Si el estado es false, envía un objeto como respuesta con el mensaje de error y el estado
+                        status: false,
+                        protocol: "err",
+                        message: validado.message
+                    });
+    
+                }
+    
+            });
+
+            }else{
+                res.status(300).send({ //Si el estado es false, envía un objeto como respuesta con el mensaje de error y el estado
+                    status: false,
+                    protocol: "err",
+                    message: exist.message
+                });
+            }
         
-       a.Validate(token, (exist) => { //Comprueba si el token es válido y le manda la respuesta a la variable exists
-           
-        if(exist.status){  //Si el estado es true, manda al usuario un mensaje de que la sesión es válida
-            res.status(200).send({
-                status: true,
-                protocol: "success",
-                message: "Logueado",
-                data: exist.data
-            });
-           }else{
-            res.status(300).send({ //Si el token no es válido, manda un mensaje de error al usuario
-                status: false,
-                protocol: "err",
-                message: exist.message
-            });
-           }
-       });
-      
+        });
+
     }
 
 }

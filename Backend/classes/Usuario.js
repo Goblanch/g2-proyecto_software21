@@ -53,6 +53,32 @@ export default class Usuario {
     getPassword(){
         return this.password;
     }
+
+    getEstadisticas(user, callback){
+
+        let sql = "SELECT user, numAcierto FROM users WHERE user = ?";
+        pool.query(sql, [user], (err, rows) => {
+            if(err) return callback({
+                status: false,
+                protocol: err,
+                message: "Hubo un error con la base de datos"
+            })
+            if(rows.length <= 0){
+                callback({
+                    status: false,
+                    protocol: "err",
+                    message: "El usuario no existe"
+                })
+            }else{
+                callback({
+                    status: true,
+                    protocol: "success",
+                    data: rows
+                })
+            }
+        })
+
+    }
     
     
 }

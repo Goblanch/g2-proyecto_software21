@@ -10,8 +10,9 @@ import rutas from './routes/routes.js';
 //Importando clases
 import Tarea from './classes/Tarea.js';
 
+
 const app = express();
-const PORT = 3000;
+const PORT = 3900;
 const t = new Tarea(); //Inicializa las tareas del servidor
 
 // Middleware
