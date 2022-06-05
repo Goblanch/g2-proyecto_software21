@@ -129,7 +129,7 @@ export default function Menu(props) {
                     <></>
                 )}
             </main>
-            <button onClick={logout} className="botones">Cerrar sesión</button>
+            <button onClick={logout} className="cerrar-sesion">Cerrar sesión</button>
 
         </>
     );

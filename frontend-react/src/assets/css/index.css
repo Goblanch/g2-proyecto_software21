@@ -278,3 +278,83 @@ main {
   color: white;
   font-size: 20px;
 }
+h1{
+  font-family: "Work Sans", sans-serif;
+  font-size: 50px;
+  color: rgb(32, 32, 32);
+}
+p {
+  color: rgb(32, 32, 32);
+  font-family: "Work Sans", sans-serif;
+}
+.cerrar-sesion , .volver{
+  display: block;
+  position: relative;
+  margin: 0.5em 0;
+  padding: .8em 2.2em;
+  cursor: pointer;
+
+  background: #ffffff;
+  border: none;
+  border-radius: .4em;
+
+  text-transform: uppercase;
+  font-size: 1.4em;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+
+  
+  transform-style: preserve-3d;
+  transition: all .2s ease-in-out;
+
+  box-shadow:0 0 15px rgba(0, 0, 0, .4) !important;
+}
+
+
+
+@keyframes sheen {
+  0% {
+    transform: skewY(-45deg) translateX(0);
+ }
+  100% {
+    transform: skewY(-45deg) translateX(12.5em);
+ }
+}
+
+.button {
+
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+  border: 0px solid;
+  font-size: 24px;
+  padding: .8em 2.2em;
+  
+  border-radius: 0.4em;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow:0 0 15px rgba(0, 0, 0, .4) !important;
+}
+.button:before {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  width: 3em;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -4.5em;
+  transform: skewX(-45deg) translateX(0);
+  transition: none;
+}
+.button:hover {
+  background-color: #4ab3f8;
+  color: #fff;
+ 
+}
+.button:hover:before {
+  transform: skewX(-45deg) translateX(13.5em);
+  transition: all 0.5s ease-in-out;
+}

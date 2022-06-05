@@ -49,12 +49,12 @@ export default function Estadisticas() {
         }
     ]
 
-    if (!globalStats || !userStats) {
+    if (!globalStats || userStats === false) {
         return <p>Cargando...</p>;
     } else {
         return (
             <>
-                <h1>Estadísticas</h1>
+                <h1>ESTADISTICAS</h1>
                 <p className='p-stats'>Tienes {userStats} puntos.</p>
                 <main className="datatable">
 
@@ -62,13 +62,13 @@ export default function Estadisticas() {
                         responsive={true}
                         columns={columns}
                         data={globalStats}
-                        defaultSortFieldId={"Puntos"}
+                        defaultSortFieldId={2}
                         pagination
                         collapse
                     />
 
                 </main>
-                <Link id="inicio" className="botones" to={"/app/inicio"}>Volver al inicio</Link>
+                <Link id="inicio" className="volver" to={"/app/inicio"}>Volver al inicio</Link>
             </>
         );
     }

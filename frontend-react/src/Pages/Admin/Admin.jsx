@@ -167,7 +167,9 @@ export default function Admin() {
 
         return (
             <>
-                <button className="botones" onClick={(e) => { e.preventDefault(); addQuestion(); }}>Añadir pregunta</button>
+                <div class="add-pregunta">
+                <button className="button" onClick={(e) => { e.preventDefault(); addQuestion(); }}>Añadir pregunta</button>
+                </div>
                 <main className="datatable">
 
                     <DataTable
@@ -180,7 +182,7 @@ export default function Admin() {
                     />
 
                 </main>
-                <Link id="inicio" className="botones" to={"/app/inicio"}>Volver al inicio</Link>
+                <Link id="inicio" className="volver" to={"/app/inicio"}>Volver al inicio</Link>
             </>
         );
     }
